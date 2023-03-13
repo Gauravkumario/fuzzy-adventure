@@ -47,7 +47,6 @@ nav > a:hover {
 
 .main-page-container > h2 {
   color: #fff;
-  margin: 0 1rem;
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 2.6rem;
@@ -55,7 +54,6 @@ nav > a:hover {
 
 .main-page-container > p {
   color: #fff;
-  margin: 0 1rem;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5rem;
@@ -63,9 +61,10 @@ nav > a:hover {
 
 .check-van-page-btn {
   color: #fff;
+  margin-top: 1rem;
   border: none;
   border-radius: 0.3rem;
-  max-width: 600px;
+  width: 600px;
   padding: 12px;
   background-color: #ff8c38;
   font-size: 1rem;
@@ -74,7 +73,7 @@ nav > a:hover {
 }
 
 .about-page-image {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   background-image: url("/src/assets/images/about-page-main-image.png");
   background-repeat: no-repeat;
@@ -100,7 +99,8 @@ nav > a:hover {
   line-height: 1.9rem;
 }
 
-.redirect-vans-page-btn {
+.redirect-vans-page-btn,
+.rent-this-van-btn {
   border-radius: 0.3rem;
   border: none;
   padding: 0.75rem 0;
@@ -112,8 +112,95 @@ nav > a:hover {
   background-color: #000;
 }
 
+.van-list-container > h1 {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.van-list {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto; /* set the height of the divs */
+  gap: 25px; /* set the gap between the items */
+}
+
+@media screen and (max-width: 768px) {
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  .van-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .van-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.van-tile {
+  margin: 1rem auto;
+  width: 300px;
+  height: auto;
+}
+
+.van-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vanImage {
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.van-type {
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.45rem;
+  font-weight: 500;
+  color: #ffead0;
+  width: 100%;
+}
+
+.simple {
+  background: #e17654;
+}
+
+.rugged {
+  background: #115e59;
+}
+
+.luxury {
+  background: #161616;
+}
+
+.van-detail-container {
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.link-button {
+  width: 100%;
+  color: #fff;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 10px;
+  background-color: #ff8c38;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
 footer {
   height: 5vh;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
