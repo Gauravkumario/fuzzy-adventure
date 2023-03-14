@@ -1,32 +1,47 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-// import Home from "./Pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Vans from "./Pages/Vans";
-import VanDetail from "./Pages/VanDetail";
+import Vans from "./Pages/Vans/Vans";
+import VanDetail from "./Pages/Vans/VanDetail";
+import Dashboard from "./Pages/Host/Dashboard";
+import Income from "./Pages/Host/Income";
+import Reviews from "./Pages/Host/Reviews";
+import HostVans from "./Pages/Host/HostVans";
+import HostVanDetails from "./Pages/Host/HostVanDetails";
+import HostVanInfo from "./Pages/Host/HostVanInfo";
+import HostVanPricing from "./Pages/Host/HostVanPricing";
+import HostVanPhotos from "./Pages/Host/HostVanPhotos";
+import Layout from "./Components/Layout";
+import HostLayout from "./Components/HostLayout";
 
 import "./server";
 
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link to="/" className="logo-text">
-          #VANLIFE
-        </Link>
-        <nav>
-          <Link to="/about">About</Link>
-          <Link to="/Vans">Vans</Link>
-        </nav>
-      </header>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Vans" element={<Vans />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/vans/:id" element={<VanDetail />} />
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="About" element={<About />} />
+
+          <Route path="Vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+
+          <Route path="Host" element={<HostLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="reviews" element={<Reviews />} />
+            <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVans />} />
+
+            <Route path="vans/:id" element={<HostVanDetails />}>
+              <Route index element={<HostVanInfo />} />
+              <Route path="pricing" element={<HostVanPricing />} />
+              <Route path="photos" element={<HostVanPhotos />} />
+            </Route>
+          </Route>
+        </Route>
       </Routes>
-      <footer>Ⓒ 2022 #VANLIFE</footer>
     </BrowserRouter>
   );
 }
