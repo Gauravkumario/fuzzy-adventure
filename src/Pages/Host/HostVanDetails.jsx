@@ -27,10 +27,11 @@ const HostVanDetails = () => {
           &larr; <span className="back-to-parent-text">Back to all vans</span>
         </Link>
       </div>
+      <div></div>
       <div className="hosted-van-detailed-page">
         <img src={currentVan.imageUrl} width={150} alt="popo" />
         <div className="hosted-van-short-info">
-          <p>{currentVan.type}</p>
+          <p className={`hosted-van-${currentVan.type}`}>{currentVan.type}</p>
           <h2>{currentVan.name}</h2>
           <p className="hosted-van-price">${currentVan.price} /day</p>
         </div>
