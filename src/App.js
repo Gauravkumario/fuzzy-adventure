@@ -16,6 +16,7 @@ import Layout from "./Components/Layout";
 import HostLayout from "./Components/HostLayout";
 
 import "./server";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path="photos" element={<HostVanPhotos />} />
             </Route>
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
