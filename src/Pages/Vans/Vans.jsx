@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import {
   Link,
   useSearchParams,
@@ -112,7 +112,9 @@ export default function Vans() {
   return (
     <>
       <h1 className="van-list-header-text">Explore our van options</h1>
-      <Await resolve={dataPromise.vans}>{renderVanElements}</Await>
+      <Suspense fallback={<h2>Loading vans...</h2>}>
+        <Await resolve={dataPromise.vans}>{renderVanElements}</Await>
+      </Suspense>
     </>
   );
 }

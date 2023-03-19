@@ -1,4 +1,9 @@
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(() => resolve(), ms));
+}
+
 export async function getVans() {
+  await sleep(2000);
   const res = await fetch("/api/vans");
   if (!res.ok) {
     // eslint-disable-next-line no-throw-literal
