@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useNavigate,
   useNavigation,
@@ -31,9 +31,11 @@ export default function Login() {
   const navigation = useNavigation();
   const from = location.state?.from || "/host";
 
-  if (data?.token) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (data?.token) {
+      navigate(from, { replace: true });
+    }
+  }, [data]);
 
   return (
     <div className="login-container">

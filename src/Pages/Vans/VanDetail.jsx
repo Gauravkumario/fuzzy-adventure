@@ -1,17 +1,22 @@
-import React from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import React, { Suspense } from "react";
+import {
+  Link,
+  useLocation,
+  useLoaderData,
+  defer,
+  Await,
+} from "react-router-dom";
+import { getVans } from "../../api";
+
+export function loader({ params }) {
+  return defer({ van: getVans(params.id) });
+}
 
 const VanDetail = () => {
-  const params = useParams();
   const location = useLocation();
+  const loaderData = useLoaderData();
   console.log(location);
-  const [vanDetail, setVanDetail] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => setVanDetail(data.vans));
-  }, [params.id]);
+  // const [van, setVan] = React.useState(null);
 
   const search = location.state?.search || "";
   const type = location.state?.type || "all";
@@ -24,24 +29,25 @@ const VanDetail = () => {
           <span className="back-to-parent-text">Back to {type} vans</span>
         </Link>
       </div>
-      <div className="van-detail-container">
-        {vanDetail ? (
-          <div className="van-detail">
-            <img className="vanImage" src={vanDetail.imageUrl} alt="van" />
-            <i className={`van-type ${vanDetail.type} selected`}>
-              {vanDetail.type}
-            </i>
-            <h2>{vanDetail.name}</h2>
-            <p className="van-price-label-sign">
-              <span className="van-price-label">${vanDetail.price}</span>/day
-            </p>
-            <p className="van-description">{vanDetail.description}</p>
-            <button className="link-button">Rent this van</button>
-          </div>
-        ) : (
-          <h2>Loading.......</h2>
-        )}
-      </div>
+      <Suspense fallback={<h2>loading vans detail</h2>}>
+        <Await resolve={loaderData.van}>
+          {(van) => (
+            <div className="van-detail-container">
+              <div className="van-detail">
+                <img className="vanImage" src={van.imageUrl} alt="van" />
+                <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                <h2>{van.name}</h2>
+                <p className="van-price-label-sign">
+                  <span className="van-price-label">${van.price}</span>
+                  /day
+                </p>
+                <p className="van-description">{van.description}</p>
+                <button className="link-button">Rent this van</button>
+              </div>
+            </div>
+          )}
+        </Await>
+      </Suspense>
     </>
   );
 };

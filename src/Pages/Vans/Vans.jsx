@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import {
   Link,
   useSearchParams,
@@ -15,10 +15,10 @@ export function loader() {
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const dataPromise = useLoaderData();
   // console.log(data);
-  console.log(setError);
+  // console.log(setError);
 
   const typeFilter = searchParams.get("type");
 
@@ -33,9 +33,9 @@ export default function Vans() {
     });
   }
 
-  if (error) {
-    return <h1>There was an error: {error.message}</h1>;
-  }
+  // if (error) {
+  //   return <h1>There was an error: {error.message}</h1>;
+  // }
 
   function renderVanElements(vans) {
     const displayVans = typeFilter
