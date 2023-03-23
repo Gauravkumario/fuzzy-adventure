@@ -75,8 +75,8 @@ createServer({
     });
     server.create("user", {
       id: "123",
-      email: "b@b.com",
-      password: "p123",
+      email: "van@life.com",
+      password: "vanlife",
       name: "Bob",
     });
   },

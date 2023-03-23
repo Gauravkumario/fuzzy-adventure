@@ -35,6 +35,7 @@ export default function Login() {
     if (data?.token) {
       navigate(from, { replace: true });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -42,12 +43,21 @@ export default function Login() {
       {location.state?.message && (
         <h3 className="login-error">{location.state.message}</h3>
       )}
-      <h1>Sign in to your account</h1>
+      <h1 className="login-page-header">Sign in to your account</h1>
       {data?.error && <h3 className="login-error">{data.error}</h3>}
       <Form action="/login" method="post" className="login-form">
-        <input name="email" type="email" placeholder="Email address" />
-        <input name="password" type="password" placeholder="Password" />
-        <button disabled={navigation.state === "submitting"}>
+        <input name="email" type="email" placeholder="Email : van@life.com" />
+        <br />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password : vanlife"
+        />
+        <br />
+        <button
+          disabled={navigation.state === "submitting"}
+          className="login-btn"
+        >
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>

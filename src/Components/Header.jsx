@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import profileIcon from "../assets/images/profile-icon.png";
+import LogoutIcon from "../../src/assets/images/logout.svg";
 
 const Header = () => {
   //   const activeStyles = {
@@ -41,7 +42,9 @@ const Header = () => {
           <Link to="login" className="loginLink">
             <img src={profileIcon} alt="profile" className="loginIcon" />
           </Link>
-          <button onClick={fakeLogOut}>X</button>
+          <button onClick={fakeLogOut} className="navbar-logout-btn">
+            <img src={LogoutIcon} alt="logout" />
+          </button>
         </nav>
       </header>
     </div>

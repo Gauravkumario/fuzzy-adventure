@@ -4,7 +4,7 @@ function sleep(ms) {
 }
 
 export async function getVans(id) {
-  await sleep(1000);
+  await sleep(100);
   const url = id ? `/api/vans/${id}` : "/api/vans";
   const res = await fetch(url);
   if (!res.ok) {

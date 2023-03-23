@@ -9,7 +9,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Vans, { loader as vansLoader } from "./Pages/Vans/Vans";
 import VanDetail, { loader as vanDetailLoader } from "./Pages/Vans/VanDetail";
-import Dashboard from "./Pages/Host/Dashboard";
+import Dashboard, { loader as hostDeshboard } from "./Pages/Host/Dashboard";
 import Income from "./Pages/Host/Income";
 import Reviews from "./Pages/Host/Reviews";
 import HostVans, { loader as hostVansLoader } from "./Pages/Host/HostVans";
@@ -50,7 +50,12 @@ const router = createBrowserRouter(
 
       <Route element={<AuthRequired />}>
         <Route path="Host" element={<HostLayout />}>
-          <Route index element={<Dashboard />} />
+          <Route
+            index
+            element={<Dashboard />}
+            errorElement={<Error />}
+            loader={hostDeshboard}
+          />
           <Route path="reviews" element={<Reviews />} />
           <Route path="income" element={<Income />} />
           <Route

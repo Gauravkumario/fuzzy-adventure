@@ -15,7 +15,6 @@ export function loader({ params }) {
 const VanDetail = () => {
   const location = useLocation();
   const loaderData = useLoaderData();
-  console.log(location);
   // const [van, setVan] = React.useState(null);
 
   const search = location.state?.search || "";
@@ -29,12 +28,15 @@ const VanDetail = () => {
           <span className="back-to-parent-text">Back to {type} vans</span>
         </Link>
       </div>
-      <Suspense fallback={<h2>loading vans detail</h2>}>
+      <Suspense
+        fallback={<h2 style={{ textAlign: "center" }}>loading vans detail</h2>}
+      >
         <Await resolve={loaderData.van}>
           {(van) => (
             <div className="van-detail-container">
               <div className="van-detail">
                 <img className="vanImage" src={van.imageUrl} alt="van" />
+                <br />
                 <i className={`van-type ${van.type} selected`}>{van.type}</i>
                 <h2>{van.name}</h2>
                 <p className="van-price-label-sign">

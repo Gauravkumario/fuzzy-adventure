@@ -17,8 +17,6 @@ export default function Vans() {
 
   // const [error, setError] = useState(null);
   const dataPromise = useLoaderData();
-  // console.log(data);
-  // console.log(setError);
 
   const typeFilter = searchParams.get("type");
 
@@ -70,7 +68,7 @@ export default function Vans() {
     ));
     return (
       <>
-        <div>
+        <div className="vans-page-filter-btn">
           <button
             onClick={() => handleFilterChange("type", "simple")}
             className={`van-type simple ${
@@ -100,7 +98,7 @@ export default function Vans() {
               onClick={() => handleFilterChange("type", null)}
               className="van-type clear-filters"
             >
-              Clear
+              Clear filters
             </button>
           ) : null}
         </div>
@@ -112,7 +110,9 @@ export default function Vans() {
   return (
     <>
       <h1 className="van-list-header-text">Explore our van options</h1>
-      <Suspense fallback={<h2>Loading vans...</h2>}>
+      <Suspense
+        fallback={<h2 style={{ textAlign: "center" }}>Loading vans...</h2>}
+      >
         <Await resolve={dataPromise.vans}>{renderVanElements}</Await>
       </Suspense>
     </>

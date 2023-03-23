@@ -44,7 +44,10 @@ const HostVanDetails = () => {
                   <p className="hosted-van-price">${currentVan.price} /day</p>
                 </div>
               </div>
-              <nav className="host-van-detail-nav">
+              <nav
+                className="host-van-detail-nav"
+                style={{ justifyContent: "flex-start" }}
+              >
                 <NavLink
                   to="."
                   end
